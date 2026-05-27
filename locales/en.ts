@@ -9,8 +9,8 @@ export const en = {
     seeWhatsComing: "See what's coming next",
     blog: "Blog",
     latestUpdates: "Latest updates and insights",
-    documentation: "Documentation",
-    guidesAndApi: "Guides and API reference",
+    aboutUs: "About Us",
+    aboutUsDescription: "Get information about us",
     helpCenter: "Help Center",
     getSupport: "Get support and answers",
     community: "Community",
@@ -31,7 +31,7 @@ export const en = {
   hero: {
     beyondComplexity: "Beyond complexity,",
     towardPotential: "Toward Potential.",
-    description: "Join 2,847 founders using the only AI that understands the nuance of your voice. Clean, precise, and uniquely yours.",
+    description: "We are a premium digital design and development studio. We craft high-performance web applications and striking brand systems that push beyond complexity toward your true potential.",
     getStarted: "Get Started"
   },
   projects: {

@@ -9,8 +9,8 @@ export const tr = {
     seeWhatsComing: "Sırada ne olduğunu görün",
     blog: "Blog",
     latestUpdates: "En son güncellemeler ve analizler",
-    documentation: "Dokümantasyon",
-    guidesAndApi: "Kılavuzlar ve API referansı",
+    aboutUs: "Hakkımızda",
+    aboutUsDescription: "Hakkımızda bilgi alın",
     helpCenter: "Yardım Merkezi",
     getSupport: "Destek ve yanıtlar alın",
     community: "Topluluk",
@@ -29,9 +29,9 @@ export const tr = {
     followCompany: "Şirket sayfamızı takip edin"
   },
   hero: {
-    beyondComplexity: "Karmaşanın ötesinde,",
-    towardPotential: "Potansiyele doğru.",
-    description: "Sesinizin en ince detaylarını bile anlayan tek yapay zekayı kullanan 2.847 kurucuya katılın. Temiz, hassas ve tamamen size özel.",
+    beyondComplexity: "Karmaşadan uzak,",
+    towardPotential: "Potansiyele yakın.",
+    description: "Biz birinci sınıf bir dijital tasarım ve geliştirme stüdyosuyuz. Karmaşıklığın ötesine geçerek gerçek potansiyelinizi ortaya çıkaran yüksek performanslı web uygulamaları ve göz alıcı marka sistemleri tasarlıyoruz.",
     getStarted: "Başlayın"
   },
   projects: {

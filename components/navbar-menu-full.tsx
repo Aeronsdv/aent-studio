@@ -74,9 +74,9 @@ export default function NavbarMenuFull() {
 					),
 				},
 				{
-					label: t("nav.documentation"),
+					label: t("nav.aboutUs"),
 					href: "/docs",
-					description: t("nav.guidesAndApi"),
+					description: t("nav.aboutUsDescription"),
 					icon: (
 						<HugeiconsIcon
 							icon={Book01Icon}
