@@ -1,0 +1,52 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Contact {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  status    String   @default("UNREAD") // "UNREAD", "READ", "ARCHIVED"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BlogPost {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  summary     String
+  content     String   // MDX or text content
+  coverImage  String?  // Optional visual asset URL
+  published   Boolean  @default(false)
+  author      String   @default("Aent Studio")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  title       String
+  titleTr     String
+  slug        String   @unique
+  category    String   // e.g. "Web Platform", "Branding"
+  categoryTr  String   // e.g. "Web Platformu", "Markalama"
+  desc        String   // English description
+  descTr      String   // Turkish description
+  coverImage  String?  // Optional image asset URL
+  bgGradient  String   @default("from-blue-600 via-indigo-500 to-purple-600") // Tailwind CSS gradient
+  glowColor   String   @default("rgba(59, 130, 246, 0.4)") // Ambient light shadow color
+  demoUrl     String?  // Live application link
+  githubUrl   String?  // Optional repository link
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+

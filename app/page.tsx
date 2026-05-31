@@ -19,10 +19,12 @@ import { ProcessSection } from "@/components/process-section"
 import { TestimonialSection } from "@/components/testimonial-section"
 import { FinalCtaSection } from "@/components/final-cta-section"
 import { MinimalFooter } from "@/components/ui/minimal-footer"
+import { ContactModal } from "@/components/contact-modal"
 
 export default function Home() {
   const { setTheme } = useTheme()
   const { language, setLanguage } = useLanguage()
+  const [isContactOpen, setIsContactOpen] = React.useState(false)
 
   return (
     <div className="relative min-h-screen w-full bg-background text-foreground transition-colors duration-300">
@@ -42,7 +44,7 @@ export default function Home() {
           </div>
 
           <div className="flex-1">
-            <NavbarMenuFull />
+            <NavbarMenuFull onContactClick={() => setIsContactOpen(true)} />
           </div>
 
           {/* Theme Switcher Button */}
@@ -79,7 +81,7 @@ export default function Home() {
         </div>
 
         {/* Projects Section ("Selected Work") */}
-        <div className="relative w-full bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900 py-32 overflow-hidden">
+        <div id="projects-section" className="relative w-full bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900 py-32 overflow-hidden">
           <ProjectsSection />
         </div>
 
@@ -105,12 +107,15 @@ export default function Home() {
 
         {/* Final CTA Section ("Kapanış") */}
         <div className="relative w-full bg-zinc-50 dark:bg-zinc-950/40 border-t border-zinc-200 dark:border-white/5 py-24 md:py-32 overflow-hidden">
-          <FinalCtaSection />
+          <FinalCtaSection onContactClick={() => setIsContactOpen(true)} />
         </div>
 
         {/* Footer */}
         <MinimalFooter />
       </main>
+
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </div>
   )
 }
+

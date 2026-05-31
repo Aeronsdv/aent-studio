@@ -10,11 +10,22 @@ const Dithering = lazy(() =>
   import("@paper-design/shaders-react").then((mod) => ({ default: mod.Dithering }))
 );
 
-export function CTASection() {
+export function CTASection({ onScrollClick }: { onScrollClick?: () => void }) {
   const [isHovered, setIsHovered] = useState(false);
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const { t } = useLanguage();
+
+  const handleScroll = () => {
+    if (onScrollClick) {
+      onScrollClick();
+    } else {
+      const nextSection = document.getElementById("projects-section");
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -85,6 +96,7 @@ export function CTASection() {
               transition={{ duration: 0.6, delay: 1.1, ease: "easeOut" }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={handleScroll}
               className="group relative inline-flex h-14 items-center justify-center gap-3 overflow-hidden rounded-full dark:bg-white bg-black/90 px-12 text-base font-medium dark:text-black text-white transition-colors duration-300 backdrop-blur-md hover:bg-black/80 dark:hover:bg-white/90 hover:ring-4 dark:hover:ring-white/20 hover:ring-black/20 cursor-pointer"
             >
               <span className="relative z-10">{t("hero.getStarted")}</span>

@@ -412,7 +412,7 @@ await studio.launchServer();`;
 
                   {/* Circle shape drifting on hover */}
                   <motion.div 
-                    className="absolute rounded-full filter blur-[1px] cursor-pointer"
+                    className="absolute rounded-full filter blur-[1px] cursor-pointer h-14 w-14"
                     style={{
                       backgroundColor: currentPalette.primary,
                       boxShadow: `0 0 20px ${currentPalette.glow}`
@@ -423,7 +423,6 @@ await studio.launchServer();`;
                       y: isDesignHovered ? -5 : 0 
                     }}
                     transition={{ type: "spring", stiffness: 80, damping: 12 }}
-                    className={`h-14 w-14 rounded-full absolute`}
                   />
 
                   {/* Frosted Glass Overlapping Square drifting opposite */}

@@ -23,7 +23,7 @@ import { NavbarWithMenu } from "@/registry/new-york/ui/navbar-menu";
 import { useLanguage } from "@/context/language-context";
 import { Button } from "@/components/ui/button";
 
-export default function NavbarMenuFull() {
+export default function NavbarMenuFull({ onContactClick }: { onContactClick?: () => void }) {
 	const { t } = useLanguage();
 
 	const sections = [
@@ -117,42 +117,35 @@ export default function NavbarMenuFull() {
 			links: [
 				{
 					label: t("nav.discord"),
-					href: "https://discord.gg/gaia",
+					href: "https://discord.gg/aentstudio",
 					description: t("nav.joinDiscord"),
 					external: true,
 					icon: <DiscordIcon className="h-5 w-5" color="#5865F2" />,
 				},
 				{
 					label: t("nav.twitter"),
-					href: "https://twitter.com/trygaia",
+					href: "https://twitter.com/aentstudio",
 					description: t("nav.followUs"),
 					external: true,
 					icon: <TwitterIcon className="h-5 w-5" color="#1DA1F2" />,
 				},
 				{
 					label: t("nav.github"),
-					href: "https://github.com/heygaia",
+					href: "https://github.com/aent",
 					description: t("nav.checkRepos"),
 					external: true,
 					icon: <Github className="h-5 w-5" />,
 				},
 				{
-					label: t("nav.whatsapp"),
-					href: "https://whatsapp.com/channel/gaia",
-					description: t("nav.joinWhatsapp"),
-					external: true,
-					icon: <WhatsappIcon className="h-5 w-5" color="#25D366" />,
-				},
-				{
 					label: t("nav.youtube"),
-					href: "https://youtube.com/@heygaia_io",
+					href: "https://youtube.com/@aentstudio",
 					description: t("nav.subscribeChannel"),
 					external: true,
 					icon: <YoutubeIcon className="h-5 w-5" color="#FF0000" />,
 				},
 				{
 					label: t("nav.linkedin"),
-					href: "https://linkedin.com/company/heygaia",
+					href: "https://linkedin.com/company/aentstudio",
 					description: t("nav.followCompany"),
 					external: true,
 					icon: <LinkedinIcon className="h-5 w-5" color="#0077B5" />,
@@ -172,7 +165,7 @@ export default function NavbarMenuFull() {
 			sections={sections} 
 			navItems={navItems}
 			cta={
-				<Button variant="default" className="cursor-pointer">
+				<Button onClick={onContactClick} variant="default" className="cursor-pointer">
 					{t("footer.contactUs")}
 				</Button>
 			}

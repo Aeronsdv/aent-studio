@@ -56,8 +56,9 @@ export function MinimalFooter() {
 		},
 		{
 			title: t('footer.contactUs'),
-			href: '#',
+			href: '/contact',
 		},
+
 	];
 
 	const socialLinks = [

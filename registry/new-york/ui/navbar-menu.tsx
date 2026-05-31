@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 import * as React from "react";
 import { ArrowDown01Icon, HugeiconsIcon } from "@/components/icons";
 
@@ -250,9 +251,9 @@ export function NavbarWithMenu({
           )}
         >
           <div className="flex items-center gap-2 px-2">
-              <span className="font-bold text-lg text-zinc-900 dark:text-white tracking-tight flex items-center gap-1.5 select-none">
-                Aent Studio
-              </span>
+            <Link href="/" className="font-bold text-lg text-zinc-900 dark:text-white tracking-tight flex items-center gap-1.5 select-none cursor-pointer">
+              Aent Studio
+            </Link>
           </div>
 
           {/* Desktop Navigation links */}

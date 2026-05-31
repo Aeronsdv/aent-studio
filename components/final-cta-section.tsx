@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/context/language-context";
 
-export function FinalCtaSection() {
+export function FinalCtaSection({ onContactClick }: { onContactClick?: () => void }) {
   const { t } = useLanguage();
   return (
     <section className="mx-auto w-full max-w-7xl px-6 md:px-8 text-center relative overflow-hidden rounded-[32px] border border-zinc-200 dark:border-white/5 bg-white/40 dark:bg-zinc-950/20 backdrop-blur-3xl py-12">
@@ -115,6 +115,7 @@ export function FinalCtaSection() {
           className="mt-4"
         >
           <button 
+            onClick={onContactClick}
             className="group relative inline-flex h-16 items-center justify-center gap-3.5 overflow-hidden rounded-full dark:bg-white bg-zinc-900 px-14 text-base font-semibold dark:text-black text-white transition-all duration-300 shadow-2xl hover:scale-105 hover:shadow-orange-500/10 cursor-pointer"
             style={{
               boxShadow: "0 25px 50px -12px rgba(236, 78, 2, 0.15)"
