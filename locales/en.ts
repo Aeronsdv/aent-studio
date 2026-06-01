@@ -26,7 +26,9 @@ export const en = {
     youtube: "YouTube",
     subscribeChannel: "Subscribe to our channel",
     linkedin: "LinkedIn",
-    followCompany: "Follow our company page"
+    followCompany: "Follow our company page",
+    instagram: "Instagram",
+    followInstagram: "Follow us on Instagram"
   },
   hero: {
     beyondComplexity: "Beyond complexity,",
@@ -428,6 +430,64 @@ export const en = {
     storyStep2Desc: "Pioneering the digital landscape for key brands with Solas Mobile, Edebi Haritam, and Krona Brand Systems.",
     storyStep3Title: "Scaling the Horizon",
     storyStep3Desc: "Today, we continue to serve as the elite engineering and design partner for high-growth global startups."
+  },
+  faqPage: {
+    title: "Frequently Asked Questions.",
+    subtitle: "Clear answers to your most common questions.",
+    searchPlaceholder: "Search questions or keywords...",
+    noResults: "No questions match your search.",
+    noResultsSub: "Try using different keywords or contact us directly.",
+    categories: {
+      all: "All",
+      general: "General",
+      process: "Process & Tech",
+      budget: "Budget & Time",
+      support: "Support & Care"
+    },
+    ctaTitle: "Still have questions?",
+    ctaDesc: "Get in touch with us to discuss your project idea or ask specific questions.",
+    items: [
+      {
+        category: "general",
+        question: "What exactly does Aent Studio do?",
+        answer: "Aent Studio is a boutique digital studio that designs and develops high-performance web applications, custom SaaS panels, and premium digital brand systems. We function as your tech partners from raw concept to global production launch."
+      },
+      {
+        category: "general",
+        question: "How are you different from a typical agency?",
+        answer: "We don't just write code for layouts handed to us or use generic templates. Operating with a founder-focused mindset, we treat your business objectives, user experience, and systems architecture as one. We deliver pixel-perfect designs integrated with bespoke engineering solutions that achieve 100% Lighthouse speeds, managed with absolute async transparency."
+      },
+      {
+        category: "process",
+        question: "What technologies and tools do you use?",
+        answer: "We use Figma for interfaces and brand architectures, and Next.js, React, Tailwind CSS, and TypeScript for web applications. For databases and serverless setups, we trust Prisma, PostgreSQL, SQLite, and global edge networks (Vercel, Cloudflare) to ensure lightning-fast transitions and zero performance lag."
+      },
+      {
+        category: "process",
+        question: "How does your design and development process work?",
+        answer: "Our process has 5 stages: Discover (defining brand layout and objectives), Design (crafting full-scale Figma wireframes and interactive mockups), Develop (coding clean and optimized systems), Launch (distributing to global edge networks), and Iterate (monitoring real analytics for upgrades). You get clear updates via Notion and Slack at every turn."
+      },
+      {
+        category: "budget",
+        question: "How long does a project typically take?",
+        answer: "Timelines depend entirely on the scope. A premium brand system and corporate website typically take 4-6 weeks, while a comprehensive web application or SaaS MVP takes around 8-12 weeks."
+      },
+      {
+        category: "budget",
+        question: "How do you determine project pricing?",
+        answer: "We customize our pricing based on scope, engineering complexity, and visual design requirements. After an in-depth discovery phase, we deliver a transparent, fixed-price proposal detailing all milestones and deliverables."
+      },
+      {
+        category: "support",
+        question: "Do you offer support after launching the project?",
+        answer: "Yes, absolutely. We offer flexible post-launch support and maintenance plans covering technical updates, speed optimization, and feature enhancements. You are never left stranded after launch."
+      },
+      {
+        category: "support",
+        question: "Can we update the website content ourselves?",
+        answer: "Yes. We integrate modern, user-friendly Content Management Systems (CMS) or custom administrative dashboards into our projects. This allows you to easily publish blog posts, add portfolio items, or edit page copy without needing any technical background."
+      }
+    ]
   }
 };
 

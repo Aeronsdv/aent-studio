@@ -30,16 +30,16 @@ export default function AboutUsPage() {
       glowColor: "rgba(249, 115, 22, 0.15)",
     },
     {
-      icon: <Sparkles className="h-6 w-6 text-amber-500" />,
+      icon: <Sparkles className="h-6 w-6 text-blue-500" />,
       titleKey: "aboutPage.value2Title",
       descKey: "aboutPage.value2Desc",
-      glowColor: "rgba(245, 158, 11, 0.15)",
+      glowColor: "rgba(59, 130, 246, 0.15)",
     },
     {
-      icon: <MessageSquare className="h-6 w-6 text-orange-600" />,
+      icon: <MessageSquare className="h-6 w-6 text-orange-500" />,
       titleKey: "aboutPage.value3Title",
       descKey: "aboutPage.value3Desc",
-      glowColor: "rgba(234, 88, 12, 0.15)",
+      glowColor: "rgba(249, 115, 22, 0.15)",
     },
   ]
 
@@ -50,24 +50,27 @@ export default function AboutUsPage() {
       titleKey: "aboutPage.storyStep1Title",
       descKey: "aboutPage.storyStep1Desc",
       time: "2024",
-      bgGradient: "from-orange-500 to-amber-500",
+      bgGradient: "from-orange-500 to-orange-500",
       glowColor: "rgba(249, 115, 22, 0.4)",
+      textColor: "text-orange-500",
     },
     {
-      icon: <Shield className="h-4 w-4 text-amber-500" />,
+      icon: <Shield className="h-4 w-4 text-blue-500" />,
       titleKey: "aboutPage.storyStep2Title",
       descKey: "aboutPage.storyStep2Desc",
       time: "2025",
-      bgGradient: "from-amber-500 to-orange-600",
-      glowColor: "rgba(245, 158, 11, 0.4)",
+      bgGradient: "from-blue-500 to-blue-500",
+      glowColor: "rgba(59, 130, 246, 0.4)",
+      textColor: "text-blue-500",
     },
     {
-      icon: <Sparkles className="h-4 w-4 text-orange-600" />,
+      icon: <Sparkles className="h-4 w-4 text-orange-500" />,
       titleKey: "aboutPage.storyStep3Title",
       descKey: "aboutPage.storyStep3Desc",
       time: "2026",
-      bgGradient: "from-orange-600 to-red-500",
-      glowColor: "rgba(234, 88, 12, 0.4)",
+      bgGradient: "from-orange-500 to-orange-500",
+      glowColor: "rgba(249, 115, 22, 0.4)",
+      textColor: "text-orange-500",
     },
   ]
 
@@ -187,10 +190,10 @@ export default function AboutUsPage() {
               whileHover={{ y: -4 }}
               className="group relative p-8 md:p-10 rounded-[32px] border border-zinc-200 dark:border-white/5 bg-white/70 dark:bg-zinc-950/20 backdrop-blur-xl transition-all duration-300 hover:border-zinc-300 dark:hover:border-white/10 hover:shadow-xl overflow-hidden"
             >
-              <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-amber-500/10 blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-500" />
+              <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-blue-500/10 blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-500" />
               
               <div className="flex items-center gap-3 mb-5">
-                <div className="p-3 rounded-2xl bg-amber-500/10 text-amber-500">
+                <div className="p-3 rounded-2xl bg-blue-500/10 text-blue-500">
                   <Sparkles className="h-6 w-6 animate-pulse" />
                 </div>
                 <h3 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
@@ -291,7 +294,7 @@ export default function AboutUsPage() {
                       <div className="group relative p-6 md:p-8 rounded-[28px] border border-zinc-200 dark:border-white/5 bg-white/80 dark:bg-zinc-950/20 backdrop-blur-xl transition-all duration-300 hover:border-zinc-300 dark:hover:border-white/10 hover:shadow-2xl overflow-hidden">
                         
                         <div className="flex items-center justify-between gap-3 mb-3">
-                          <span className="text-xs font-mono font-black text-orange-500 uppercase tracking-widest">
+                          <span className={`text-xs font-mono font-black ${step.textColor} uppercase tracking-widest`}>
                             {step.time}
                           </span>
                           <div className="p-1.5 rounded-lg bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/5">

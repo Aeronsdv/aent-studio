@@ -26,7 +26,9 @@ export const tr = {
     youtube: "YouTube",
     subscribeChannel: "Kanalımıza abone olun",
     linkedin: "LinkedIn",
-    followCompany: "Şirket sayfamızı takip edin"
+    followCompany: "Şirket sayfamızı takip edin",
+    instagram: "Instagram",
+    followInstagram: "Gelişmeler için bizi takip edin"
   },
   hero: {
     beyondComplexity: "Karmaşadan uzak,",
@@ -428,6 +430,64 @@ export const tr = {
     storyStep2Desc: "Edebi Haritam, Solas ve Krona gibi premium projelerle markaların dijital dönüşümüne öncülük ettik.",
     storyStep3Title: "Geleceğe Dönük Adımlar",
     storyStep3Desc: "Bugün, küresel markalara ve vizyoner girişimlere teknoloji ortağı olarak yön vermeye devam ediyoruz."
+  },
+  faqPage: {
+    title: "Sıkça Sorulan Sorular.",
+    subtitle: "Aklınıza takılan sorular ve şeffaf yanıtlarımız.",
+    searchPlaceholder: "Soru veya anahtar kelime arayın...",
+    noResults: "Aramanızla eşleşen bir soru bulunamadı.",
+    noResultsSub: "Farklı anahtar kelimeler deneyebilir veya bizimle doğrudan iletişime geçebilirsiniz.",
+    categories: {
+      all: "Tümü",
+      general: "Genel",
+      process: "Süreç & Teknoloji",
+      budget: "Zaman & Bütçe",
+      support: "Destek & Bakım"
+    },
+    ctaTitle: "Hâlâ sorularınız mı var?",
+    ctaDesc: "Aklınızdaki projeyi konuşmak veya özel sorularınızı iletmek için bizimle iletişime geçin.",
+    items: [
+      {
+        category: "general",
+        question: "Aent Studio tam olarak ne yapar?",
+        answer: "Aent Studio; yüksek performanslı web uygulamaları, modern SaaS panelleri ve birinci sınıf dijital marka kimlikleri tasarlayan ve geliştiren butik bir dijital stüdyodur. Fikir aşamasından küresel ölçekte yayına kadar her aşamada teknoloji ortağınız olarak çalışırız."
+      },
+      {
+        category: "general",
+        question: "Sıradan bir ajanstan farkınız nedir?",
+        answer: "Biz sadece önümüze konan tasarımı koda döken veya şablonlar kullanan bir ajans değiliz. Kurucu ortak odaklı düşünceyle hareket ederek iş hedeflerinizi, kullanıcı deneyimini ve sistem mimarisini bir bütün olarak ele alırız. Piksel hassasiyetinde tasarımları, Lighthouse performans puanı %100 olan ve asenkron şeffaflıkla yönetilen özel mühendislik çözümleriyle sunarız."
+      },
+      {
+        category: "process",
+        question: "Hangi teknolojileri ve araçları kullanıyorsunuz?",
+        answer: "Arayüz ve görsel sistem tasarımlarında Figma; modern web uygulamalarında Next.js, React, Tailwind CSS ve TypeScript kullanıyoruz. Veritabanı ve sunucusuz mimarilerde Prisma, PostgreSQL, SQLite ve küresel uç ağları (Vercel, Cloudflare) tercih ederek ultra hızlı sayfa geçişleri ve kesintisiz performans sağlıyoruz."
+      },
+      {
+        category: "process",
+        question: "Tasarım ve geliştirme süreciniz nasıl işliyor?",
+        answer: "Sürecimiz 5 adımdan oluşur: Keşif (marka mimarisi ve hedeflerin belirlenmesi), Tasarım (birebir etkileşimli Figma prototipleri), Geliştirme (temiz ve optimize kodlama), Yayın (sunucusuz küresel ağlara dağıtım) ve Yineleme (canlı analitik verileriyle iyileştirme). Her aşamada Notion ve Slack üzerinden şeffaf güncellemeler alırsınız."
+      },
+      {
+        category: "budget",
+        question: "Bir projenin tamamlanması ne kadar sürer?",
+        answer: "Projenin kapsamına bağlı olarak süreler değişiklik gösterir. Tipik olarak premium bir marka kimliği ve kurumsal web sitesi 4-6 hafta sürerken, kapsamlı bir web uygulaması veya SaaS platformunun MVP sürümü 8-12 hafta arasında tamamlanır."
+      },
+      {
+        category: "budget",
+        question: "Proje fiyatlandırması nasıl belirleniyor?",
+        answer: "Çalışmalarımızı projenin kapsamına, teknik gereksinimlerine ve tasarım detaylarına göre özel olarak fiyatlandırıyoruz. Keşif aşamasının ardından, tüm isterlerin ve teslimatların net olduğu şeffaf ve sabit fiyatlı bir bütçe teklifi sunuyoruz."
+      },
+      {
+        category: "support",
+        question: "Proje yayınlandıktan sonra destek vermeye devam ediyor musunuz?",
+        answer: "Evet, kesinlikle. Lansman sonrasında oluşabilecek teknik ihtiyaçlar, performans takipleri ve yeni özellik eklemeleri için esnek bakım ve destek paketleri sunuyoruz. Yayından sonra da yalnız kalmazsınız."
+      },
+      {
+        category: "support",
+        question: "Web sitemizin içeriklerini kendimiz güncelleyebilir miyiz?",
+        answer: "Evet. Geliştirdiğimiz projelerde modern ve kullanıcı dostu içerik yönetim sistemleri (CMS) veya özel yönetim panelleri entegre ediyoruz. Bu sayede teknik bilgiye ihtiyaç duymadan blog yazılarınızı, projelerinizi veya ürün bilgilerinizi dilediğiniz gibi güncelleyebilirsiniz."
+      }
+    ]
   }
 };
 

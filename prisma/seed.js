@@ -1,5 +1,7 @@
+/* eslint-disable */
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+
 
 async function main() {
   // Clear any existing database records to maintain a clean seed environment
