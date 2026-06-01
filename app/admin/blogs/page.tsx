@@ -62,7 +62,7 @@ export default function BlogManager() {
 
   const previewHtml = React.useMemo(() => {
     try {
-      return marked.parseSync(content)
+      return marked.parse(content) as string
     } catch (e) {
       return ""
     }
@@ -179,9 +179,9 @@ export default function BlogManager() {
       setCoverImage("")
       setTags("")
       setPublishImmediately(false)
-    } catch (err: any) {
+    } catch (err) {
       console.error(err)
-      setComposerError(err.message || "An error occurred.")
+      setComposerError(err instanceof Error ? err.message : "An error occurred.")
     } finally {
       setSubmitting(false)
     }
@@ -283,7 +283,7 @@ export default function BlogManager() {
               <BookOpen className="h-10 w-10 text-zinc-450 dark:text-zinc-555 mb-3 stroke-1" />
               <h4 className="font-bold text-sm text-zinc-650 dark:text-zinc-400">{t("admin.noBlogPosts")}</h4>
               <p className="text-[11px] text-zinc-550 dark:text-zinc-500 max-w-[240px] mt-1.5 font-medium leading-relaxed">
-                Start writing by clicking the "Write Post" button. Your articles will store inside SQLite using Prisma.
+                Start writing by clicking the &quot;Write Post&quot; button. Your articles will store inside SQLite using Prisma.
               </p>
             </div>
           ) : (

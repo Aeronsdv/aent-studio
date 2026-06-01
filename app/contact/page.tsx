@@ -89,9 +89,9 @@ export default function ContactPage() {
       setEmail("")
       setSubject("")
       setMessage("")
-    } catch (err: any) {
+    } catch (err) {
       console.error(err)
-      setErrorMsg(err.message || t("contactModal.errorGeneric"))
+      setErrorMsg(err instanceof Error ? err.message : t("contactModal.errorGeneric"))
     } finally {
       setIsSubmitting(false)
     }

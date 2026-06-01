@@ -187,9 +187,9 @@ export default function ProjectsManager() {
       }
 
       setIsComposerOpen(false)
-    } catch (err: any) {
+    } catch (err) {
       console.error(err)
-      setComposerError(err.message || "An error occurred.")
+      setComposerError(err instanceof Error ? err.message : "An error occurred.")
     } finally {
       setSubmitting(false)
     }

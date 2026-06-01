@@ -43,12 +43,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const activeDict = dictionaries[language] || en;
     const parts = path.split(".");
     
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let current: any = activeDict;
     for (const part of parts) {
       if (current && typeof current === "object" && part in current) {
         current = current[part];
       } else {
         // Fallback to English dictionary if not found in active dictionary
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let enFallback: any = en;
         for (const enPart of parts) {
           if (enFallback && typeof enFallback === "object" && enPart in enFallback) {

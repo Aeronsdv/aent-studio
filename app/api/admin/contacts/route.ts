@@ -8,7 +8,15 @@ export async function GET(request: Request) {
     const status = searchParams.get("status"); // "ALL", "UNREAD", "READ", "ARCHIVED"
     const search = searchParams.get("q") || ""; // Search term
 
-    let whereClause: any = {};
+    const whereClause: {
+      status?: string;
+      OR?: Array<{
+        name?: { contains: string; signupCase: undefined };
+        email?: { contains: string };
+        subject?: { contains: string };
+        message?: { contains: string };
+      }>;
+    } = {};
 
     // Apply status filter if provided
     if (status && status !== "ALL") {
@@ -33,7 +41,7 @@ export async function GET(request: Request) {
     });
 
     return NextResponse.json({ success: true, data: contacts });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error fetching contacts for admin:", error);
     return NextResponse.json(
       { error: "Failed to fetch contact requests." },
@@ -73,7 +81,7 @@ export async function PATCH(request: Request) {
       message: `Message status updated to ${status}.`,
       data: updatedContact,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error updating contact status:", error);
     return NextResponse.json(
       { error: "Failed to update contact request status." },
@@ -103,7 +111,7 @@ export async function DELETE(request: Request) {
       success: true,
       message: "Message successfully deleted from database.",
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error deleting contact request:", error);
     return NextResponse.json(
       { error: "Failed to delete contact request." },

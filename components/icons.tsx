@@ -23,7 +23,7 @@ export const UserGroupIcon = Users;
 export const ArrowDown01Icon = ChevronDown;
 
 interface HugeiconsIconProps extends React.ComponentPropsWithoutRef<"svg"> {
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
   size?: number;
   className?: string;
 }

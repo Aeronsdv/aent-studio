@@ -37,7 +37,7 @@ export async function POST(request: Request) {
       { success: true, message: "Contact request submitted successfully.", data: newContact },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error creating contact request:", error);
     return NextResponse.json(
       { error: "An unexpected error occurred on the server. Please try again." },

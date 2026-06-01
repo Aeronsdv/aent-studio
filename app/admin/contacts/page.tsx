@@ -326,7 +326,7 @@ export default function ContactsManager() {
 
             {/* Message Content */}
             <div className="space-y-1.5">
-              <span className="text-[10px] font-bold font-mono tracking-wider text-zinc-450 dark:text-zinc-500 uppercase">{t("admin.messageBody")}: "{selectedContact.subject}"</span>
+              <span className="text-[10px] font-bold font-mono tracking-wider text-zinc-450 dark:text-zinc-500 uppercase">{t("admin.messageBody")}: &quot;{selectedContact.subject}&quot;</span>
               <div className="p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-white/5 text-zinc-750 dark:text-zinc-300 text-sm leading-relaxed overflow-auto max-h-[160px] whitespace-pre-wrap font-medium">
                 {selectedContact.message}
               </div>

@@ -17,7 +17,7 @@ export async function POST() {
     });
 
     return response;
-  } catch (error: any) {
+  } catch (error) {
     console.error("Logout API Error:", error);
     return NextResponse.json(
       { success: false, error: "An unexpected error occurred." },

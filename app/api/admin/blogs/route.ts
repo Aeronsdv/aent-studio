@@ -32,7 +32,7 @@ export async function GET() {
       },
     });
     return NextResponse.json({ success: true, data: posts });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error fetching blog posts for admin:", error);
     return NextResponse.json(
       { error: "Failed to load blog posts." },
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
       );
     }
 
-    let baseSlug = slugify(title);
+    const baseSlug = slugify(title);
     let finalSlug = baseSlug;
     let count = 1;
 
@@ -86,7 +86,7 @@ export async function POST(request: Request) {
       message: "Blog post successfully created in database.",
       data: newPost,
     }, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error creating blog post:", error);
     return NextResponse.json(
       { error: "Failed to create blog post." },
@@ -120,12 +120,12 @@ export async function PATCH(request: Request) {
     }
 
     // Build update object based on what was passed
-    const updateData: any = {};
+    const updateData: Record<string, string | boolean | null> = {};
     if (title !== undefined) {
       updateData.title = title.trim();
       // Generate new slug if title changed
       if (title.trim() !== existingPost.title) {
-        let baseSlug = slugify(title);
+        const baseSlug = slugify(title);
         let finalSlug = baseSlug;
         let count = 1;
         while (true) {
@@ -155,7 +155,7 @@ export async function PATCH(request: Request) {
       message: "Blog post successfully updated.",
       data: updatedPost,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error updating blog post:", error);
     return NextResponse.json(
       { error: "Failed to update blog post." },
@@ -185,7 +185,7 @@ export async function DELETE(request: Request) {
       success: true,
       message: "Blog post deleted successfully.",
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error deleting blog post:", error);
     return NextResponse.json(
       { error: "Failed to delete blog post." },
