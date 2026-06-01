@@ -45,7 +45,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { title, summary, content, coverImage, published } = body;
+    const { title, summary, content, coverImage, published, tags } = body;
 
     if (!title || !summary || !content) {
       return NextResponse.json(
@@ -77,6 +77,7 @@ export async function POST(request: Request) {
         coverImage: coverImage ? coverImage.trim() : null,
         published: !!published,
         author: "Aent Studio",
+        tags: tags ? tags.trim() : "",
       },
     });
 
@@ -98,7 +99,7 @@ export async function POST(request: Request) {
 export async function PATCH(request: Request) {
   try {
     const body = await request.json();
-    const { id, title, summary, content, coverImage, published } = body;
+    const { id, title, summary, content, coverImage, published, tags } = body;
 
     if (!id) {
       return NextResponse.json(
@@ -142,6 +143,7 @@ export async function PATCH(request: Request) {
     if (content !== undefined) updateData.content = content.trim();
     if (coverImage !== undefined) updateData.coverImage = coverImage ? coverImage.trim() : null;
     if (published !== undefined) updateData.published = !!published;
+    if (tags !== undefined) updateData.tags = tags ? tags.trim() : "";
 
     const updatedPost = await db.blogPost.update({
       where: { id },

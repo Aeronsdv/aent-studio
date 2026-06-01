@@ -6,6 +6,7 @@ async function main() {
   await prisma.contact.deleteMany();
   await prisma.blogPost.deleteMany();
   await prisma.project.deleteMany();
+  await prisma.roadmapItem.deleteMany();
 
   // Create hydrated contact inquiries representing client profiles
   await prisma.contact.createMany({
@@ -52,6 +53,7 @@ async function main() {
         coverImage: "/images/krona-construction.jpg",
         published: true,
         author: "Aent Studio",
+        tags: "Design, Geometry, Math, Branding",
       },
       {
         title: "Atmospheric and Spatial Micro-interactions in React 19",
@@ -61,6 +63,7 @@ async function main() {
         coverImage: "/images/solas-spatial.jpg",
         published: false,
         author: "Aent Studio",
+        tags: "React, Motion, Physics, UI/UX",
       },
     ],
   });
@@ -106,6 +109,60 @@ async function main() {
         glowColor: "rgba(239, 68, 68, 0.4)",
         demoUrl: "https://solas-home.app",
         published: true,
+      }
+    ]
+  });
+
+  // Hydrate high-fidelity roadmap items with colorful, pulsing checkpoints representing sprints
+  await prisma.roadmapItem.createMany({
+    data: [
+      {
+        title: "Interactive Brand Systems",
+        titleTr: "İnteraktif Marka Sistemleri",
+        description: "Enabling responsive math grid visualizers and Golden Ratio layout blueprints dynamically rendered on Figma and digital dashboards.",
+        descriptionTr: "Figma ve dijital panellerde dinamik olarak işlenen duyarlı matematiksel kılavuz görselleştiricileri ve Altın Oran kurumsal yerleşim taslaklarını etkinleştirme.",
+        quarter: "Q1 2026",
+        quarterTr: "1. Çeyrek 2026",
+        targetDate: new Date("2026-03-31"),
+        status: "COMPLETED",
+        bgGradient: "from-emerald-500 via-teal-500 to-cyan-600",
+        glowColor: "rgba(16, 185, 129, 0.45)",
+      },
+      {
+        title: "SaaS Dashboard Presets",
+        titleTr: "SaaS Kontrol Paneli Hazır Tasarımları",
+        description: "Launching state-of-the-art glassmorphic, interactive, and speed-optimized SaaS dashboard templates powered by Prisma and SQLite.",
+        descriptionTr: "Prisma ve SQLite ile güçlendirilmiş, son teknoloji buzlu cam (glassmorphic), etkileşimli ve hız açısından optimize edilmiş SaaS kontrol paneli şablonlarının yayına alınması.",
+        quarter: "Q2 2026",
+        quarterTr: "2. Çeyrek 2026",
+        targetDate: new Date("2026-06-30"),
+        status: "IN_PROGRESS",
+        bgGradient: "from-blue-600 via-indigo-650 to-purple-600",
+        glowColor: "rgba(59, 130, 246, 0.45)",
+      },
+      {
+        title: "WebGL & 3D Interactive Assets",
+        titleTr: "WebGL & 3D İnteraktif Varlıklar",
+        description: "Integrating fluid simulation shaders, mathematical bezier path visual nodes, and custom 3D spatial controllers inside React portfolios.",
+        descriptionTr: "React portföyleri içerisine akışkan simülasyon gölgelendiricileri (shaders), matematiksel bezier yolu görsel düğümleri ve özel 3D uzamsal kontrolörlerin entegre edilmesi.",
+        quarter: "Q3 2026",
+        quarterTr: "3. Çeyrek 2026",
+        targetDate: new Date("2026-09-30"),
+        status: "PLANNED",
+        bgGradient: "from-orange-500 via-pink-500 to-rose-600",
+        glowColor: "rgba(249, 115, 22, 0.45)",
+      },
+      {
+        title: "Global Serverless DB Distribution",
+        titleTr: "Küresel Sunucusuz Veri Tabanı Dağıtımı",
+        description: "Fine-tuning SQLite engines with serverless edge caching nodes to guarantee single-digit millisecond latency scores across millions of queries.",
+        descriptionTr: "Milyonlarca sorguda tek haneli milisaniye gecikme sürelerini garanti etmek için SQLite motorlarını sunucusuz uç önbellekleme (edge caching) düğümleri ile ince ince optimize etme.",
+        quarter: "Q4 2026",
+        quarterTr: "4. Çeyrek 2026",
+        targetDate: new Date("2026-12-31"),
+        status: "PLANNED",
+        bgGradient: "from-indigo-600 via-indigo-950 to-blue-950",
+        glowColor: "rgba(99, 102, 241, 0.4)",
       }
     ]
   });

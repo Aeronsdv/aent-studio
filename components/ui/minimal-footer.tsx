@@ -17,19 +17,19 @@ export function MinimalFooter() {
 	const company = [
 		{
 			title: t('footer.aboutUs'),
-			href: '#',
+			href: '/about-us',
 		},
 		{
 			title: t('footer.ourMission'),
-			href: '#',
+			href: '/about-us',
 		},
 		{
 			title: t('footer.ourVision'),
-			href: '#',
+			href: '/about-us',
 		},
 		{
 			title: t('footer.roadmap'),
-			href: '#',
+			href: '/roadmap',
 		},
 		{
 			title: t('footer.terms'),
@@ -40,15 +40,11 @@ export function MinimalFooter() {
 	const resources = [
 		{
 			title: t('footer.blog'),
-			href: '#',
+			href: '/blog',
 		},
 		{
 			title: t('footer.product'),
-			href: '#',
-		},
-		{
-			title: t('footer.blog'),
-			href: '#',
+			href: '/products',
 		},
 		{
 			title: t('footer.community'),
@@ -58,7 +54,6 @@ export function MinimalFooter() {
 			title: t('footer.contactUs'),
 			href: '/contact',
 		},
-
 	];
 
 	const socialLinks = [
@@ -129,7 +124,7 @@ export function MinimalFooter() {
 					<p className="text-muted-foreground text-center font-thin">
 						{language === 'tr' ? (
 							<>
-								© <a href="https://www.instagram.com/aentstudio/" className="hover:underline">Aent Studio</a> tarafından <span className="text-red-500">❤</span> ile yapılmıştır. {t('footer.allRightsReserved')} {year}
+								© <a href="https://www.instagram.com/aentstudio/" className="hover:underline">Aent Studio</a> tarafından <span className="text-red-500">❤</span> ile geliştirildi. {t('footer.allRightsReserved')} {year}
 							</>
 						) : (
 							<>

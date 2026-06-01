@@ -23,7 +23,8 @@ import {
   Terminal,
   Sun,
   Moon,
-  Languages
+  Languages,
+  Route
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "motion/react"
@@ -83,6 +84,12 @@ export default function AdminLayout({
       href: "/admin/projects", 
       icon: Sparkles,
       desc: t("admin.projectsDesc") 
+    },
+    { 
+      label: t("admin.roadmap"), 
+      href: "/admin/roadmap", 
+      icon: Route,
+      desc: t("admin.roadmapDesc") 
     },
   ]
 

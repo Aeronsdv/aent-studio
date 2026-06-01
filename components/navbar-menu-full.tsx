@@ -75,7 +75,7 @@ export default function NavbarMenuFull({ onContactClick }: { onContactClick?: ()
 				},
 				{
 					label: t("nav.aboutUs"),
-					href: "/docs",
+					href: "/about-us",
 					description: t("nav.aboutUsDescription"),
 					icon: (
 						<HugeiconsIcon
@@ -87,7 +87,7 @@ export default function NavbarMenuFull({ onContactClick }: { onContactClick?: ()
 				},
 				{
 					label: t("nav.helpCenter"),
-					href: "/help",
+					href: "/faq",
 					description: t("nav.getSupport"),
 					icon: (
 						<HugeiconsIcon

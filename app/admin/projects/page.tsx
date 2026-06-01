@@ -409,7 +409,7 @@ export default function ProjectsManager() {
           {/* Title Row */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-bold font-mono tracking-wider text-zinc-500 dark:text-zinc-400 uppercase">{t("admin.titleLabel")}</label>
+              <label className="text-xs font-bold font-mono tracking-wider text-zinc-500 dark:text-zinc-400 uppercase">{t("admin.projectTitleLabel")}</label>
               <Input
                 required
                 placeholder="e.g. Edebî Haritam"

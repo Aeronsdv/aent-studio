@@ -123,3 +123,145 @@
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
+/* Premium Prose Styles for Aent Studio Blog */
+.prose-aent {
+  font-size: 1rem;
+  line-height: 1.85;
+  letter-spacing: -0.009em;
+}
+
+.prose-aent p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  color: var(--color-foreground);
+  opacity: 0.85;
+}
+
+.prose-aent h1,
+.prose-aent h2,
+.prose-aent h3,
+.prose-aent h4 {
+  color: var(--color-foreground);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+  line-height: 1.35;
+}
+
+.prose-aent h1 {
+  font-size: 2.25rem;
+}
+
+.prose-aent h2 {
+  font-size: 1.75rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.3em;
+}
+
+.prose-aent h3 {
+  font-size: 1.35rem;
+}
+
+.prose-aent h4 {
+  font-size: 1.15rem;
+}
+
+.prose-aent a {
+  color: #f97316; /* Tailwind orange-500 */
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.prose-aent a:hover {
+  color: #ea580c; /* Tailwind orange-600 */
+  text-decoration-color: #ea580c;
+}
+
+.prose-aent blockquote {
+  margin: 2em 0;
+  padding: 1.25em 1.5em;
+  border-left: 4px solid #f97316;
+  background: color-mix(in srgb, #f97316 6%, transparent);
+  border-radius: 0 16px 16px 0;
+  font-style: italic;
+}
+
+.prose-aent blockquote p {
+  margin: 0;
+  opacity: 0.95;
+}
+
+.prose-aent ul {
+  list-style-type: disc;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+}
+
+.prose-aent ol {
+  list-style-type: decimal;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+}
+
+.prose-aent li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  opacity: 0.85;
+}
+
+.prose-aent pre {
+  margin: 2em 0;
+  padding: 1.5em;
+  background: #09090b; /* zinc-950 */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow-x: auto;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.prose-aent pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  color: #f4f4f5; /* zinc-100 */
+}
+
+.prose-aent code {
+  padding: 0.2em 0.4em;
+  background: color-mix(in srgb, #f97316 10%, transparent);
+  color: #f97316;
+  border: 1px solid color-mix(in srgb, #f97316 20%, transparent);
+  border-radius: 6px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85em;
+}
+
+.prose-aent img {
+  margin: 2.5em auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.dark .prose-aent img {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.prose-aent hr {
+  margin: 3em 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+

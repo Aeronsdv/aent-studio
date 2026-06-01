@@ -76,7 +76,7 @@ export function TestimonialSection() {
       opacity: 1,
       filter: "blur(0px)",
       transition: {
-        x: { type: "spring", stiffness: 120, damping: 18 },
+        x: { type: "spring" as const, stiffness: 120, damping: 18 },
         opacity: { duration: 0.4 },
         filter: { duration: 0.3 }
       }
@@ -86,7 +86,7 @@ export function TestimonialSection() {
       opacity: 0,
       filter: "blur(5px)",
       transition: {
-        x: { type: "spring", stiffness: 120, damping: 18 },
+        x: { type: "spring" as const, stiffness: 120, damping: 18 },
         opacity: { duration: 0.3 },
         filter: { duration: 0.2 }
       }

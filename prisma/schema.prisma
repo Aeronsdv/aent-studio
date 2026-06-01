@@ -27,6 +27,7 @@ model BlogPost {
   coverImage  String?  // Optional visual asset URL
   published   Boolean  @default(false)
   author      String   @default("Aent Studio")
+  tags        String   @default("") // Comma-separated tags, e.g. "Design, React, Web"
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -49,4 +50,21 @@ model Project {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model RoadmapItem {
+  id            String   @id @default(uuid())
+  title         String
+  titleTr       String
+  description   String
+  descriptionTr String
+  quarter       String   // e.g. "Q3 2026"
+  quarterTr     String   // e.g. "3. Çeyrek 2026"
+  targetDate    DateTime // Used for sorting chronologically
+  status        String   @default("PLANNED") // "PLANNED", "IN_PROGRESS", "COMPLETED"
+  bgGradient    String   @default("from-orange-500 to-amber-500")
+  glowColor     String   @default("rgba(249, 115, 22, 0.4)")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
 

@@ -17,9 +17,19 @@ import {
   User, 
   Link as LinkIcon, 
   Sparkles,
-  FileCheck
+  FileCheck,
+  Bold,
+  Italic,
+  Heading2,
+  Heading3,
+  Quote,
+  List,
+  Code,
+  Edit3,
+  Eye
 } from "lucide-react"
 import { motion, AnimatePresence } from "motion/react"
+import { marked } from "marked"
 
 interface BlogPost {
   id: string
@@ -30,6 +40,7 @@ interface BlogPost {
   coverImage: string | null
   published: boolean
   author: string
+  tags: string
   createdAt: string
 }
 
@@ -44,7 +55,60 @@ export default function BlogManager() {
   const [summary, setSummary] = React.useState("")
   const [content, setContent] = React.useState("")
   const [coverImage, setCoverImage] = React.useState("")
+  const [tags, setTags] = React.useState("")
   const [publishImmediately, setPublishImmediately] = React.useState(false)
+  const [composerTab, setComposerTab] = React.useState<"write" | "preview">("write")
+  const textareaRef = React.useRef<HTMLTextAreaElement>(null)
+
+  const previewHtml = React.useMemo(() => {
+    try {
+      return marked.parseSync(content)
+    } catch (e) {
+      return ""
+    }
+  }, [content])
+
+  const insertMarkdown = (syntax: string, placeholder = "") => {
+    const textarea = textareaRef.current
+    if (!textarea) return
+
+    const start = textarea.selectionStart
+    const end = textarea.selectionEnd
+    const text = textarea.value
+
+    const selectedText = text.substring(start, end)
+    let replacement = ""
+    let newContent = ""
+    let newCursorPos = start
+
+    if (syntax === "### " || syntax === "## " || syntax === "> " || syntax === "- ") {
+      replacement = syntax + (selectedText || placeholder)
+      newContent = text.substring(0, start) + replacement + text.substring(end)
+      newCursorPos = start + replacement.length
+    } else if (syntax === "```") {
+      replacement = "```\n" + (selectedText || placeholder) + "\n```"
+      newContent = text.substring(0, start) + replacement + text.substring(end)
+      newCursorPos = start + 4 + (selectedText || placeholder).length
+    } else if (syntax === "**" || syntax === "*") {
+      replacement = syntax + (selectedText || placeholder) + syntax
+      newContent = text.substring(0, start) + replacement + text.substring(end)
+      newCursorPos = start + syntax.length + (selectedText || placeholder).length + syntax.length
+    } else if (syntax === "link") {
+      replacement = `[${selectedText || "Link Text"}](https://)`
+      newContent = text.substring(0, start) + replacement + text.substring(end)
+      newCursorPos = start + 1 + (selectedText || "Link Text").length + 10
+    } else {
+      newContent = text.substring(0, start) + syntax + text.substring(end)
+      newCursorPos = start + syntax.length
+    }
+
+    setContent(newContent)
+    
+    setTimeout(() => {
+      textarea.focus()
+      textarea.setSelectionRange(newCursorPos, newCursorPos)
+    }, 50)
+  }
   const [composerError, setComposerError] = React.useState<string | null>(null)
   const [submitting, setSubmitting] = React.useState(false)
 
@@ -94,6 +158,7 @@ export default function BlogManager() {
           content,
           coverImage: coverImage.trim() || null,
           published: publishImmediately,
+          tags,
         }),
       })
 
@@ -112,6 +177,7 @@ export default function BlogManager() {
       setSummary("")
       setContent("")
       setCoverImage("")
+      setTags("")
       setPublishImmediately(false)
     } catch (err: any) {
       console.error(err)
@@ -303,7 +369,7 @@ export default function BlogManager() {
         <form onSubmit={handleCreatePost} className="space-y-4 mt-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-bold font-mono tracking-wider text-zinc-500 dark:text-zinc-400 uppercase">{t("admin.titleLabel")}</label>
+              <label className="text-xs font-bold font-mono tracking-wider text-zinc-500 dark:text-zinc-400 uppercase">{t("admin.blogTitleLabel")}</label>
               <Input
                 required
                 placeholder="e.g. Building Spatially Aware Systems"
@@ -336,15 +402,140 @@ export default function BlogManager() {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-bold font-mono tracking-wider text-zinc-500 dark:text-zinc-400 uppercase">{t("admin.contentLabel")}</label>
-            <Textarea
-              required
-              placeholder="Write your article body content. Supports HTML markup or raw text paragraphs..."
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
+            <label className="text-xs font-bold font-mono tracking-wider text-zinc-500 dark:text-zinc-400 uppercase">Tags (Comma-separated)</label>
+            <Input
+              placeholder="e.g. Design, React, Web"
+              value={tags}
+              onChange={(e) => setTags(e.target.value)}
               disabled={submitting}
-              className="min-h-[160px]"
             />
+          </div>
+
+          <div className="space-y-2">
+            <div className="flex items-center justify-between border-b border-zinc-200 dark:border-white/5 pb-2">
+              <label className="text-xs font-bold font-mono tracking-wider text-zinc-500 dark:text-zinc-400 uppercase">
+                {t("admin.contentLabel")}
+              </label>
+              
+              {/* Tab Selector */}
+              <div className="flex gap-1 p-0.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-white/5">
+                <button
+                  type="button"
+                  onClick={() => setComposerTab("write")}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[10px] font-bold cursor-pointer transition-all duration-200 ${
+                    composerTab === "write"
+                      ? "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
+                      : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300"
+                  }`}
+                >
+                  <Edit3 className="h-3 w-3" />
+                  Write
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setComposerTab("preview")}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[10px] font-bold cursor-pointer transition-all duration-200 ${
+                    composerTab === "preview"
+                      ? "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
+                      : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300"
+                  }`}
+                >
+                  <Eye className="h-3 w-3" />
+                  Live Preview
+                </button>
+              </div>
+            </div>
+
+            {composerTab === "write" ? (
+              <div className="space-y-1.5">
+                {/* Markdown Editor Helper Toolbar */}
+                <div className="flex flex-wrap items-center gap-1 p-1 bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-white/5 rounded-xl">
+                  <button
+                    type="button"
+                    onClick={() => insertMarkdown("**", "bold text")}
+                    className="p-1.5 hover:bg-zinc-150 dark:hover:bg-zinc-800 rounded-lg text-zinc-650 dark:text-zinc-350 cursor-pointer active:scale-95 transition-all"
+                    title="Bold"
+                  >
+                    <Bold className="h-3.5 w-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => insertMarkdown("*", "italic text")}
+                    className="p-1.5 hover:bg-zinc-150 dark:hover:bg-zinc-800 rounded-lg text-zinc-650 dark:text-zinc-350 cursor-pointer active:scale-95 transition-all"
+                    title="Italic"
+                  >
+                    <Italic className="h-3.5 w-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => insertMarkdown("## ", "Heading 2")}
+                    className="p-1.5 hover:bg-zinc-150 dark:hover:bg-zinc-800 rounded-lg text-zinc-650 dark:text-zinc-350 cursor-pointer active:scale-95 transition-all font-mono text-[10px] font-bold"
+                    title="H2"
+                  >
+                    <Heading2 className="h-3.5 w-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => insertMarkdown("### ", "Heading 3")}
+                    className="p-1.5 hover:bg-zinc-150 dark:hover:bg-zinc-800 rounded-lg text-zinc-650 dark:text-zinc-350 cursor-pointer active:scale-95 transition-all font-mono text-[10px] font-bold"
+                    title="H3"
+                  >
+                    <Heading3 className="h-3.5 w-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => insertMarkdown("> ", "blockquote")}
+                    className="p-1.5 hover:bg-zinc-150 dark:hover:bg-zinc-800 rounded-lg text-zinc-650 dark:text-zinc-350 cursor-pointer active:scale-95 transition-all"
+                    title="Quote"
+                  >
+                    <Quote className="h-3.5 w-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => insertMarkdown("- ", "list item")}
+                    className="p-1.5 hover:bg-zinc-150 dark:hover:bg-zinc-800 rounded-lg text-zinc-650 dark:text-zinc-350 cursor-pointer active:scale-95 transition-all"
+                    title="List"
+                  >
+                    <List className="h-3.5 w-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => insertMarkdown("```", "code block")}
+                    className="p-1.5 hover:bg-zinc-150 dark:hover:bg-zinc-800 rounded-lg text-zinc-650 dark:text-zinc-350 cursor-pointer active:scale-95 transition-all"
+                    title="Code Block"
+                  >
+                    <Code className="h-3.5 w-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => insertMarkdown("link")}
+                    className="p-1.5 hover:bg-zinc-150 dark:hover:bg-zinc-800 rounded-lg text-zinc-650 dark:text-zinc-350 cursor-pointer active:scale-95 transition-all"
+                    title="Link"
+                  >
+                    <LinkIcon className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+
+                {/* Textarea */}
+                <textarea
+                  ref={textareaRef}
+                  required
+                  placeholder="Write your article body content using Markdown..."
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  disabled={submitting}
+                  className="w-full min-h-[220px] p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-white/5 text-sm text-zinc-850 dark:text-zinc-200 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all font-mono leading-relaxed"
+                />
+              </div>
+            ) : (
+              // Live Markdown Render Box
+              <div className="w-full min-h-[268px] max-h-[380px] p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-white/5 overflow-y-auto text-left select-text">
+                <div 
+                  className="prose-aent text-zinc-800 dark:text-zinc-200 text-sm leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: previewHtml || "<i>Nothing to preview yet. Start typing in the Write tab!</i>" }}
+                />
+              </div>
+            )}
           </div>
 
           {/* Settings */}
@@ -416,9 +607,26 @@ export default function BlogManager() {
 
             {/* Excerpt Summary */}
             <div className="p-4 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-white/5 rounded-2xl">
-              <span className="text-[10px] font-bold font-mono tracking-wider text-zinc-450 dark:text-zinc-550 uppercase block mb-1">SUMMARY</span>
+              <span className="text-[10px] font-bold font-mono tracking-wider text-zinc-450 dark:text-zinc-555 uppercase block mb-1">SUMMARY</span>
               <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 leading-relaxed">{selectedPost.summary}</p>
             </div>
+
+            {/* Tags preview */}
+            {selectedPost.tags && (
+              <div className="space-y-1.5">
+                <span className="text-[10px] font-bold font-mono tracking-wider text-zinc-450 dark:text-zinc-555 uppercase block">TAGS</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {selectedPost.tags.split(",").map((tag, idx) => (
+                    <span 
+                      key={idx} 
+                      className="inline-flex items-center text-[10px] font-bold bg-orange-500/10 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400 px-2.5 py-0.5 rounded-full border border-orange-500/10"
+                    >
+                      {tag.trim()}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Content Body */}
             <div className="space-y-1.5">
