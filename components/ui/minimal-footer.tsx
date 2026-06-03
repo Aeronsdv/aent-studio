@@ -1,13 +1,12 @@
 "use client";
 
 import {
-	FacebookIcon,
-	GithubIcon,
+	DiscordIcon,
+	Github,
 	InstagramIcon,
-	LinkedinIcon,
 	TwitterIcon,
 	YoutubeIcon,
-} from 'lucide-react';
+} from "@/components/icons/social-icons";
 import { useLanguage } from '@/context/language-context';
 
 export function MinimalFooter() {
@@ -58,8 +57,24 @@ export function MinimalFooter() {
 
 	const socialLinks = [
 		{
-			icon: <InstagramIcon className="size-4" />,
-			link: 'https://www.instagram.com/aentstudio/',
+			icon: <DiscordIcon size={16} className="size-4" color="#5865F2" />,
+			link: "https://discord.gg/UaJJSVFw2x",
+		},
+		{
+			icon: <TwitterIcon size={16} className="size-4" color="#1DA1F2" />,
+			link: "https://x.com/Aentstudio",
+		},
+		{
+			icon: <Github size={16} className="size-4" />,
+			link: "https://github.com/AentStudio",
+		},
+		{
+			icon: <YoutubeIcon size={16} className="size-4" color="#FF0000" />,
+			link: "https://www.youtube.com/@AentStudio",
+		},
+		{
+			icon: <InstagramIcon size={16} className="size-4" color="#E1306C" />,
+			link: "https://instagram.com/aentstudio",
 		},
 	];
 	return (
